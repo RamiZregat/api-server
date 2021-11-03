@@ -10,35 +10,35 @@ router.put('/clothes/:id',updateCloth);
 router.delete('/clothes/:id',deleteCloth);
 
 
-function createCloth(req,res){
+async function createCloth(req,res){
 
     const obj=req.body;
-    let cloth=clothesCollection.create(obj)
+    let cloth=await clothesCollection.create(obj)
     res.status(201).json(cloth)
 }
 
-function getClothes(req,res){
-    let cloth=clothesCollection.read();
+async function getClothes(req,res){
+    let cloth=await clothesCollection.read();
     res.status(200).json(cloth)
 }
 
-function getCloth(req,res){
+async function getCloth(req,res){
     const id=parseInt(req.params.id);
-    let cloth=clothesCollection.read(id)
+    let cloth=await clothesCollection.read(id)
     res.status(200).json(cloth)
 }
 
-function updateCloth(req,res){
+async function updateCloth(req,res){
     const obj=req.body;
     const id=parseInt(req.params.id);
-    let cloth=clothesCollection.update(id,obj)
+    let cloth=await clothesCollection.update(id,obj)
     res.status(201).json(cloth)
 }
 
-function deleteCloth(req,res){
+async function deleteCloth(req,res){
     const id=parseInt(req.params.id);
-    let cloth=clothesCollection.delete(id)
+    let cloth=await clothesCollection.delete(id)
     res.status(204).json(cloth)
 
 }
-module.exports = clothesRouter;
+module.exports = router;

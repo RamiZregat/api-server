@@ -27,15 +27,15 @@ class Collection{
 
     async update(id,obj){
         try{
-            let recordId= this.model.findOne({where:{id}});
-            let updatedRecord=recordId.update(obj);
+            let recordId= await this.model.findOne({where:{id}});
+            let updatedRecord=await recordId.update(obj);
             return updatedRecord;
         }catch(err){console.log(err);}
     }
 
     async delete(id){
         try{
-            let deletedRecord=this.model.destroy({where:{id}})
+            let deletedRecord= await this.model.destroy({where:{id}})
             return deletedRecord
         }catch(err){console.log(err);}
     }
