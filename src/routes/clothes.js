@@ -41,5 +41,4 @@ function deleteCloth(req,res){
     res.status(204).json(cloth)
 
 }
-
 module.exports = clothesRouter;
